@@ -13,15 +13,15 @@ int arr_size = CheckInput(get_string);
 int[] nums = new int[arr_size]; 
 nums = FillUpArrayWithNums(arr_size, nums);
 
-int count_nums = 0;
+int count_sum = 0;
 
-foreach (int item in nums) if (CheckOddNum (item)) count_nums += item;
+for (int i = 0; i < arr_size; i++) if (CheckOddIndex (i)) count_sum += nums[i];
 
 Console.Write("\nYou've entered array: ");
 foreach (int item in nums) Console.Write(item + " ");
-Console.WriteLine("\nThe sum of odd elements is " + count_nums);
+Console.WriteLine("\nThe sum of elements of odd indexes of array is " + count_sum);
 
-bool CheckOddNum (int number) => number % 2 != 0 ? true : false;
+bool CheckOddIndex (int idx) => idx % 2 != 0 ? true : false;
 
 int CheckInput (string get_string) {
     while (true) {
