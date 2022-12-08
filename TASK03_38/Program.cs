@@ -19,9 +19,9 @@ Console.WriteLine($"\nDifference between max ({CheckMinMax(nums).Item1}) and min
 
 (int, int) CheckMinMax (int[] nums_array) {
     int max = nums_array[0], min = nums_array[0];
-    for (int i = 0; i < nums_array.Length; i ++) {
-        if (nums_array[i] > max) max = nums_array[i];
-        if (nums_array[i] < min) min = nums_array[i];
+     foreach (int item in nums_array) {
+         if (item > max) max = item;
+         if (item < min) min = item;
     }
     return (max, min);
 }
