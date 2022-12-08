@@ -19,7 +19,7 @@ nums = FillUpAnArray(arr_size, nums);
 int[] odd_nums = new int[CountOddEvenNums(arr_size, nums).Item2];
 int[] even_nums = new int[CountOddEvenNums(arr_size, nums).Item1];
 
-Console.WriteLine("You've entered an array:" + string.Join(" ", nums));
+Console.WriteLine("You've entered an array: " + string.Join(" ", nums));
 Console.WriteLine();
 
 int a =0, b = 0;
@@ -36,27 +36,37 @@ foreach (int item in nums) {
 
 double avg_even = Math.Round(CountAverage (even_nums), 2);
 double avg_odd = Math.Round(CountAverage(odd_nums), 2);
-Console.WriteLine("Array of even numbers: " + string.Join(" ", even_nums));
-Console.WriteLine("Average is " + avg_even);
-Console.WriteLine();
-Console.WriteLine("Array of odd numbers: " + string.Join(" ", odd_nums));
-Console.WriteLine("Average is " + avg_odd);
-Console.WriteLine();
-if (avg_even > avg_odd) Console.WriteLine($"Average of even numbers array {avg_even} greater than average odd numbers {avg_odd}");
-else Console.WriteLine($"Average of even numbers array {avg_odd} greater than odd numbers {avg_even}");
+string what_to_print = String.Empty;
 
+PrintResultArrays (even_nums, avg_even, what_to_print = "even");
+PrintResultArrays (odd_nums, avg_odd, what_to_print = "odd");
+
+if (avg_even > avg_odd) Console.WriteLine($"Average of even numbers array {avg_even} greater than average odd numbers {avg_odd}");
+else Console.WriteLine($"Average of odd numbers array {avg_odd} greater than even numbers {avg_even}\n");
+
+void PrintResultArrays (int[] array, double avg, string what_to_print){   
+    if (array.Length != 0){
+        Console.WriteLine($"Array of {what_to_print} numbers: " + string.Join(" ", array));
+        Console.WriteLine("Average is " + avg);
+    }
+    else {
+        Console.WriteLine($"Array of {what_to_print} numbers is empty!");
+        Console.WriteLine("Average is 0!");
+    }
+}
 
 double CountAverage (int[] arr) {
     double avg = 0;
     foreach (int item in arr) avg += item;
-    return avg/arr.Length;
+    if (avg != 0) return avg/arr.Length;
+     else return 0;
 }
 
 (int, int) CountOddEvenNums (int size, int[] arr) {
     int count_odd = 0;
     int count_even = 0;
     // ПОЧЕМУ НЕ РАБОТАЕТ СЛЕДУЮЩИЙ КОД? foreach (int item in arr) item % 2 == 0 ? count_even++ : count_odd ++;
-    //ХОТЯ В ЗАДАЧЕ ! РАБОТАЕТ
+    //ХОТЯ В ЗАДАЧЕ 1 РАБОТАЕТ
     for (int i = 0; i < size; i++) {
           if (arr[i] % 2 == 0) count_even ++;
           else count_odd ++;
