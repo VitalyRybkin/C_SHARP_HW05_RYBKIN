@@ -56,6 +56,7 @@ double CountAverage (int[] arr) {
     int count_odd = 0;
     int count_even = 0;
     // ПОЧЕМУ НЕ РАБОТАЕТ СЛЕДУЮЩИЙ КОД? foreach (int item in arr) item % 2 == 0 ? count_even++ : count_odd ++;
+    //ХОТЯ В ЗАДАЧЕ ! РАБОТАЕТ
     for (int i = 0; i < size; i++) {
           if (arr[i] % 2 == 0) count_even ++;
           else count_odd ++;
